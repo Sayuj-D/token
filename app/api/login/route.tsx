@@ -21,7 +21,10 @@ export async function POST(request: Request) {
 
     // create the JWT token:
     const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: "10s" });
-    return NextResponse.json({ token }, { status: 200 });
+
+    // generate a refresh token:
+    const refToken = jwt.sign({ email }, SECRET_KEY, { expiresIn: "30s" });
+    return NextResponse.json({ token, refToken }, { status: 200 });
   } catch {
     return NextResponse.json({ message: "Here is the error" }, { status: 500 });
   }

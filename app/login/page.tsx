@@ -24,6 +24,7 @@ const LogIn = () => {
 
       if (res.ok) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("refToken", data.refToken);
         router.push("/home");
       } else {
         alert("something went worng");
@@ -39,7 +40,7 @@ const LogIn = () => {
     <>
       <div className="flex justify-center items-center h-screen">
         <form
-          className="flex flex-col gap-4 w-80 bg-amber-100 p-4 rounded-2xl"
+          className="flex flex-col gap-4 w-80 bg-amber-100 p-6 rounded-2xl"
           onSubmit={handleSubmit}
         >
           <input
